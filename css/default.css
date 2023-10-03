@@ -32,6 +32,7 @@ button {
 	border-color: transparent;
 	border: none;
 	cursor: pointer;
+	background-color: transparent;
 }
 
 a {
@@ -64,6 +65,10 @@ fieldset {
 	max-width: calc(var(--container) + var(--padding-container)*2);
 	padding: 0 var(--padding-container);
 	margin: 0 auto;
+}
+
+.currency {
+	font-weight: 400;
 }
 
 @media (min-width: 480px) {
