@@ -53,7 +53,7 @@ h1, h2, h3, p, figure {
 fieldset {
 	margin: 0;
 	padding: 0;
-	bottom: 0;
+	border: 0;
 }
 
 .visually-hidden {

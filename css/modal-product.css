@@ -63,6 +63,29 @@
 	line-height: 100%; /* 12px */
 }
 
+.modal-product__btn:hover {
+	background-color: #FFAB08;
+}
+
+.modal-product__btn:focus-visible {
+	background-color: #F86310;
+}
+
+.modal-product__btn:active {
+	transform: translate(1px, 2px);
+}
+
+.modal-product__btn:disabled {
+	background-color: #F9F9F9;
+	color: #ACACAC;
+}
+
+@supports not selector(:focus-visible) {
+	.modal-product__btn:focus {
+		background-color: #F86310;
+	}
+}
+
 .modal-product__price {
 	text-align: right;
 }
