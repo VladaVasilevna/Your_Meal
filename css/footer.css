@@ -42,6 +42,13 @@
 	color: #FF7020;
 }
 
+.footer__link-phone:hover,
+.footer__link-phone:focus,
+.footer__link-sn:hover,
+.footer__link-sn:focus {
+	color: #FFAB08;
+}
+
 .footer__development {
 	display: flex;
 	flex-direction: column;

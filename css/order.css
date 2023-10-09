@@ -29,7 +29,7 @@
 	pointer-events: none;
 }
 
-.order__wrap-title:focus-visible {
+.order__wrap-title:focus-visible:after {
 	outline-color: #FFAB08;
 }
 
@@ -124,6 +124,24 @@ line-height: 16px;
 	line-height: 100%; /* 12px */
 	color: #FFFFFF;
 	margin-bottom: 8px;
+	transition: transform .1s ease, background-color .3s ease-in-out;
+}
+
+.order__submit:hover {
+	background-color: #FFAB08;
+}
+
+.order__submit:focus-visible {
+	background-color: #F86310;
+}
+
+.order__submit:active {
+	transform: translate(1px, 2px);
+}
+
+.order__submit:disabled {
+	background-color: #F9F9F9;
+	color: #ACACAC;
 }
 
 .order__wrap-apeal {
@@ -179,6 +197,11 @@ line-height: 16px;
 
 	.order__wrap-title {
 		margin-bottom: 12px;
+		pointer-events: none;
+	}
+
+	.order__wrap-title:after {
+		content: none;
 	}
 
 	.order__title {

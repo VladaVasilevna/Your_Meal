@@ -5,6 +5,7 @@
 	border-radius: 12px;
 	background: #FFFFFF;
 	min-height: 243px;
+	position: relative;
 }
 
 .product__image {
@@ -32,7 +33,30 @@
 
 .product__detail {
 	outline: none;
+}
 
+.product__detail:hover,
+.product__detail:focus-visible {
+	color: #F86310;
+}
+
+.product__detail:after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	outline: 1px solid transparent;
+	border-radius: 12px;
+}
+
+@supports not selector(:focus-visible) {
+	.product__detail:focus {
+		color: #F86310;
+	}
+}
+
+.product__detail:focus-visible:after {
+	outline-color: #F86310;
 }
 
 .product__weight {
@@ -51,7 +75,26 @@
 	font-weight: 400;
 	line-height: 100%; /* 12px */
 	padding: 9px;
+	transition: transform .1s ease, background-color .3s ease-in-out;
 }
+
+.product__add:hover {
+	background-color: #FFAB08;
+}
+
+.product__add:focus-visible {
+	background-color: #F86310;
+}
+
+.product__add:active {
+	transform: translate(1px, 2px);
+}
+
+.product__add:disabled {
+	background-color: #F9F9F9;
+	color: #ACACAC;
+}
+
 
 @media (min-width: 1024px) {
 
