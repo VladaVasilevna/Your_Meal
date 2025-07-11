@@ -16,6 +16,19 @@
 	<link rel="preload" href="fonts/nunito-v26-cyrillic_latin-regular.woff2" as="font" crossorigin>
 	<link rel="preload" href="fonts/nunito-v26-cyrillic_latin-800.woff2" as="font" crossorigin>
 	<link rel="stylesheet" href="css/index.css">
+	<script defer src="js/index.js"></script>
+	<script defer src="js/products-burgers.js"></script>
+   	<script defer src="js/products-snacks.js"></script>
+   	<script defer src="js/products-hotdogs.js"></script>
+	<script defer src="js/products-combo.js"></script>
+	<script defer src="js/products-shawarma.js"></script>
+	<script defer src="js/products-pizza.js"></script>
+	<script defer src="js/products-wok.js"></script>
+	<script defer src="js/products-desserts.js"></script>
+	<script defer src="js/products-sauces.js"></script>
+	<script defer src="js/products.js"></script>
+	<script defer src="js/cart.js"></script>
+	<script defer src="js/modal.js"></script>
 </head>
 
 <body>
@@ -39,31 +52,31 @@
 				<ul class="navigation__list">
 					<li class="navigation__item">
 						<button
-							class="navigation__button navigation__button_burger navigation__button_active">Бургеры</button>
+							class="navigation__button navigation__button_burger navigation__button_active" data-category="Бургеры">Бургеры</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_snack">Закуски</button>
+						<button class="navigation__button navigation__button_snack" data-category="Закуски">Закуски</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_hot-dog">Хот-доги</button>
+						<button class="navigation__button navigation__button_hot-dog" data-category="Хот-доги">Хот-доги</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_combo">Комбо</button>
+						<button class="navigation__button navigation__button_combo" data-category="Комбо">Комбо</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_shawarma">Шаурма</button>
+						<button class="navigation__button navigation__button_shawarma" data-category="Шаурма">Шаурма</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_pizza">Пицца</button>
+						<button class="navigation__button navigation__button_pizza" data-category="Пицца">Пицца</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_wok">Вок</button>
+						<button class="navigation__button navigation__button_wok" data-category="Вок">Вок</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_dessert">Десерты</button>
+						<button class="navigation__button navigation__button_dessert" data-category="Десерты">Десерты</button>
 					</li>
 					<li class="navigation__item">
-						<button class="navigation__button navigation__button_sauce">Соусы</button>
+						<button class="navigation__button navigation__button_sauce" data-category="Соусы">Соусы</button>
 					</li>
 				</ul>
 			</div>
@@ -138,6 +151,7 @@
 						</div>
 					</section>
 				</div>
+				<div class="order__overlay"></div>
 				<div class="catalog__wrapper">
 					<h2 class="catalog__title">Бургеры</h2>
 					<div class="catalog__wrap_list">
@@ -223,13 +237,13 @@
 				<address class="footer__address">
 					<div class="footer__contact">
 						<h2 class="footer__title">Номер для заказа</h2>
-						<a class="footer__link-phone" href="tel: +79308333811">
+						<a class="footer__link-phone" href="#">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
 								xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z" />
 							</svg>
-							<span>+7(000)000-00-00</span>
+							<span>+7(ХХХ)ХХХ-ХХ-ХХ</span>
 						</a>
 					</div>
 					<div class="footer__contact">
