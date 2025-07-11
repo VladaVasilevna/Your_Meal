@@ -1,6 +1,7 @@
 const orderList = document.querySelector('.order__list');
 const orderTotalAmount = document.querySelector('.order__total-amount');
 const orderCount = document.querySelector('.order__count');
+const orderApeal = document.querySelector('.order__apeal');
 
 window.cart = [];
 
@@ -45,6 +46,13 @@ function renderCart() {
     });
     orderTotalAmount.innerHTML = `${total} <span class="currency">₽</span>`;
     orderCount.textContent = totalCount;
+    if (orderApeal) {
+        if (total >= 599) {
+            orderApeal.textContent = 'Бесплатная доставка';
+        } else {
+            orderApeal.textContent = 'Доставка 149 ₽';
+        }
+    }
 }
 
 orderList.addEventListener('click', (event) => {

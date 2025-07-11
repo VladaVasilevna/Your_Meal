@@ -1,0 +1,45 @@
+window.productsSnacks = [
+    {
+        title: 'Начос',
+        price: 250,
+        weight: 220,
+        calories: 410,
+        description: 'Хрустящие кукурузные чипсы, подаются с сырным соусом. Отличная закуска для компании!',
+        image: 'img/nachos.jpg',
+        ingredients: [
+            'Кукурузные чипсы',
+            'Сырный соус',
+            'Соль',
+        ],
+        category: 'Закуски',
+    },
+    {
+        title: 'Картошка фри',
+        price: 245,
+        weight: 180,
+        calories: 320,
+        description: 'Золотистая, хрустящая картошка фри — идеальный гарнир или самостоятельная закуска.',
+        image: 'img/free1.jpg',
+        ingredients: [
+            'Картофель',
+            'Масло',
+            'Соль',
+        ],
+        category: 'Закуски',
+    },
+    {
+        title: 'Луковые кольца',
+        price: 230,
+        weight: 160,
+        calories: 290,
+        description: 'Легкие и хрустящие луковые кольца в панировке, обжаренные до золотистой корочки.',
+        image: 'img/opinion_rings.jpg',
+        ingredients: [
+            'Лук',
+            'Панировка',
+            'Масло',
+            'Соль',
+        ],
+        category: 'Закуски',
+    },
+];
