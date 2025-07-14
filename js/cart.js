@@ -5,6 +5,16 @@ const orderApeal = document.querySelector('.order__apeal');
 
 window.cart = [];
 
+// Восстановление корзины из localStorage при загрузке
+const savedCart = localStorage.getItem('cart');
+if (savedCart) {
+    try {
+        window.cart = JSON.parse(savedCart);
+    } catch (e) {
+        window.cart = [];
+    }
+}
+
 window.addToCart = function(product, count) {
     const cartItem = window.cart.find(item => item.title === product.title);
     if (cartItem) {
@@ -15,8 +25,13 @@ window.addToCart = function(product, count) {
             count: count
         });
     }
+    saveCart();
     renderCart();
 };
+
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(window.cart));
+}
 
 function renderCart() {
     orderList.innerHTML = '';
@@ -53,6 +68,29 @@ function renderCart() {
             orderApeal.textContent = 'Доставка 149 ₽';
         }
     }
+    saveCart(); // сохраняем корзину при каждом рендере
+    // Управляем видимостью кнопки Очистить
+    const orderClearBtn = document.querySelector('.order__clear');
+    if (orderClearBtn) {
+        orderClearBtn.style.display = window.cart.length ? 'inline-block' : 'none';
+        // Снимаем старый обработчик (на всякий случай)
+        orderClearBtn.onclick = null;
+        // Навешиваем новый обработчик
+        if (window.cart.length) {
+            orderClearBtn.onclick = () => {
+                window.cart = [];
+                saveCart();
+                orderBlock.classList.remove('order_open');
+                orderOverlay.style.display = 'none';
+                renderCart();
+            };
+        }
+    }
+    // Если корзина пуста, закрываем корзину и убираем overlay
+    if (window.cart.length === 0) {
+        orderBlock.classList.remove('order_open');
+        orderOverlay.style.display = 'none';
+    }
 }
 
 orderList.addEventListener('click', (event) => {
@@ -85,6 +123,7 @@ const orderCloseBtn = document.querySelector('.order__close');
 const orderOverlay = document.querySelector('.order__overlay');
 
 function openOrder() {
+    if (window.cart.length === 0) return; // Не открывать, если корзина пуста
     orderBlock.classList.add('order_open');
     orderOverlay.style.display = 'block';
 }

@@ -81,6 +81,8 @@ line-height: 100%;
 
 .order__list {
 	margin-bottom: 13px;
+	max-height: 300px;
+    overflow-y: auto;
 }
 
 .order__item {
@@ -163,6 +165,26 @@ line-height: 16px;
 	color: #ACACAC;
 }
 
+.order__clear {
+    padding: 2px 10px;
+    margin-left: 10px;
+    border-radius: 8px;
+    background: #F2F2F3;
+    font-size: 12px;
+    font-weight: 400;
+    color: #B1B1B1;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    height: 24px;
+    align-self: center;
+    display: inline-block;
+}
+.order__clear:hover, .order__clear:focus-visible {
+    background: #FFAB08;
+    color: #fff;
+}
+
 .order__wrap-apeal {
 	display: flex;
 	align-items: center;
@@ -218,6 +240,10 @@ line-height: 16px;
 		margin-bottom: 12px;
 		pointer-events: none;
 	}
+
+	    .order__wrap-title .order__clear {
+        pointer-events: auto;
+    }
 
 	.order__wrap-title:after {
 		content: none;

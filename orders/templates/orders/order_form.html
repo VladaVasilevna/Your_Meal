@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оформление заказа</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <style>
+      .errorlist { color: red; }
+    </style>
+</head>
+<body>
+<div class="modal show" style="display:block;">
+  <div class="modal-dialog">
+    <form method="post" id="orderForm" novalidate>
+      {% csrf_token %}
+      <h3>Оформление заказа</h3>
+      {{ form.non_field_errors }}
+      <div class="form-group">
+        {{ form.name.label_tag }} {{ form.name }} {{ form.name.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.phone.label_tag }} {{ form.phone }} {{ form.phone.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.email.label_tag }} {{ form.email }} {{ form.email.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.street.label_tag }} {{ form.street }} {{ form.street.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.house.label_tag }} {{ form.house }} {{ form.house.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.building.label_tag }} {{ form.building }} {{ form.building.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.apartment.label_tag }} {{ form.apartment }} {{ form.apartment.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.entrance.label_tag }} {{ form.entrance }} {{ form.entrance.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.floor.label_tag }} {{ form.floor }} {{ form.floor.errors }}
+      </div>
+      <div class="form-group">
+        {{ form.comment.label_tag }} {{ form.comment }} {{ form.comment.errors }}
+      </div>
+      <div id="map" style="width:100%;height:300px;margin-bottom:10px;"></div>
+      <div class="alert alert-info" style="margin-bottom: 10px;">
+        <strong>Сумма заказа:</strong> {{ total }} ₽<br>
+        <strong>Доставка:</strong> {% if delivery == 0 %}Бесплатно{% else %}{{ delivery }} ₽{% endif %}<br>
+        <strong>Итого к оплате:</strong> {{ total_with_delivery }} ₽
+      </div>
+      <input type="hidden" name="cart_json" id="cart_json">
+      <button type="submit" class="btn btn-primary">Оплатить онлайн</button>
+    </form>
+  </div>
+</div>
+<script>
+ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [55.76, 37.64],
+            zoom: 10
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+        myPlacemark;
+
+    myMap.events.add('click', function (e) {
+        var coords = e.get('coords');
+        if (myPlacemark) {
+            myPlacemark.geometry.setCoordinates(coords);
+        } else {
+            myPlacemark = new ymaps.Placemark(coords, {}, { draggable: true });
+            myMap.geoObjects.add(myPlacemark);
+        }
+        // Геокодирование для автозаполнения адреса
+        ymaps.geocode(coords).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0);
+            if (firstGeoObject) {
+                var address = firstGeoObject.getAddressLine();
+                document.getElementById("id_street").value = address;
+            }
+        });
+    });
+});
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    var cart = localStorage.getItem('cart') || '[]';
+    document.getElementById('cart_json').value = cart;
+});
+</script>
+</body>
+</html>
